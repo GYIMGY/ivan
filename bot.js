@@ -63,6 +63,17 @@ client.on("message", async (message) => {
 
 		message.reply(message.content.replaceAll("7", " **Ivan** "));
 	}
+	
+	// replace "Jimmy" with "Immy" if enabled
+	if (message.content.includes("Jimmy")) {
+		let isEnable = await isEnableInServer(guildId);
+
+		if (!isEnable) {
+			return;
+		}
+
+		message.reply(message.content.replaceAll("Jimmy", " **Immy** "));
+	}
 })
 
 async function isEnableInServer(guildId) {
